@@ -21,7 +21,7 @@ export default function EntryTable({ entries }) {
                   <TableCell align="right">Link</TableCell>
                   <TableCell align="right">User</TableCell>
                   <TableCell align="right">Category</TableCell>
-                  <TableCell align="right">Open</TableCell>
+                  <TableCell align="right">Open or Share</TableCell>
                </TableRow>
             </TableHead>
             <TableBody>
