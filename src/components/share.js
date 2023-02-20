@@ -1,22 +1,27 @@
+// This feature allows users to directly share the link to their socials from the app
 // Credit: Inspired from Snappy -Online Tutorial - Snappy (https://snappywebdesign.net/blog/how-to-code-a-social-share-button-with-material-ui/)
 
 import React, { useState } from "react";
 import { Button, IconButton, Popover, Typography  } from "@mui/material";
 import ShareIcon from '@mui/icons-material/Share';
 
-export default function ShareButton ({ link }) {
-  const [anchorEl, setPopup] = useState(null);
+export default function Share ({ link }) {
+  //anchorEl's state determines wheter to open or close the popup share tile
+  const [anchorEl, setanchorEl] = useState(null);
+
+  //Set anchor on click
   const handleClick = (event) => {
-    setPopup(event.currentTarget);
+    setanchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setPopup(null);
+    setanchorEl(null);
   };
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  //No validation for link correctness (assume they are valid links)
   const handleShare = (service) => {
     let shareLink = "";
     switch (service) {
@@ -49,6 +54,7 @@ export default function ShareButton ({ link }) {
       <Popover
         id={id}
         open={open}
+        //variable name is 'anchorEl' for MUI styling to work
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{

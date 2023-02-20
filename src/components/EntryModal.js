@@ -1,5 +1,4 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import { Link } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -18,7 +17,8 @@ import { addEntry } from '../utils/mutations';
 import { updateEntry } from '../utils/mutations';
 import { deleteEntry } from '../utils/mutations';
 
-import ShareButton from './share';
+//Additional feature implemented: see share.js for component
+import Share from './share';
 
 
 
@@ -117,7 +117,7 @@ export default function EntryModal({ entry, type, user }) {
          <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
             <Button variant="outlined" color="error" onClick={handleDeletion}> Delete</Button>
-            <Button variant="contained" onClick={handleEdit}>Edit</Button>
+            <Button variant="contained" onClick={handleEdit}>Save</Button>
          </DialogActions>
          : type === "add" ?
             <DialogActions>
@@ -129,7 +129,8 @@ export default function EntryModal({ entry, type, user }) {
    return (
       <div>
          {openButton}
-         <ShareButton link={entry.link} />
+         {/* Additional feature: Sharebutton, see component share.js */}
+         <Share link={entry.link} />
          <Dialog open={open} onClose={handleClose}>
             <DialogTitle>{type === "edit" ? name : "Add Entry"}</DialogTitle>
             <DialogContent>
